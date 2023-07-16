@@ -14,3 +14,5 @@ window.addEventListener("load", function() {
    })
    
 });
+
+/*ONLY MODIFY THIS AND SCRIPTHELPER.JS*/
