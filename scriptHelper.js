@@ -19,8 +19,11 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 function validateInput(testInput) {
     // take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" as appropriate
    // use validateInput() to complete the formSubmission() function
+   console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput}`);
    if (typeof testInput !== String) {
-    return "Not a string."
+    return "Not a string"
+   } else if (typeof testInput === String) {
+    return "Is a string"
    } else if (testInput === "") {
     return "Empty"
    } else if (isNaN(testInput)) {
