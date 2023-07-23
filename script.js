@@ -1,7 +1,5 @@
 // Write your JavaScript code here!
 
-// const validateInputs = require("./scriptHelper"); // PROBABLY DON'T NEED THIS.
-
 window.addEventListener("load", function() {
     const form = document.getElementById("launchForm");
     const launchForm = document.getElementById("launchForm");

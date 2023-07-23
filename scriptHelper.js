@@ -30,7 +30,7 @@ function validateInput(testInput) {
    } else if (typeof (testInput) === String) {
     // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing is a string`);
     return "Is a string"
-   } else (typeof (testInput) !== String) {
+   } else { // (typeof (testInput) !== String) {
     // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing not a string`);
     return "Not a string"
    };   
