@@ -19,10 +19,11 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 function validateInput(testInput) {
     // take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" as appropriate
    // use validateInput() to complete the formSubmission() function
-   console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput}`);
-   if (typeof testInput !== String) {
+   console.log(`testInput value in scriptHelper.js is ${testInput}`);
+   console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js`);
+   if (typeof (testInput) !== String) {
     return "Not a string"
-   } else if (typeof testInput === String) {
+   } else if (typeof (testInput) === String) {
     return "Is a string"
    } else if (testInput === "") {
     return "Empty"

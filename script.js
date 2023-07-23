@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-// const validateInputs = require("./scriptHelper");
+// const validateInputs = require("./scriptHelper"); // PROBABLY DON'T NEED THIS.
 
 window.addEventListener("load", function() {
     const form = document.getElementById("launchForm");
@@ -16,11 +16,17 @@ window.addEventListener("load", function() {
         let fuelLevelInput = document.querySelector("input[name = fuelLevel]");
         let cargoMassInput = document.querySelector("input[name = cargoMass]");
 
+        // alert(`pilotNameInput.value is ${pilotNameInput.value}`);
+
+        // validateInput(pilotNameInput.value);
+
         // validate pilot's name
-        if (validateInput(pilotNameInput.value) === "Not a string" || validateInput(pilotNameInput.value) === "Empty") {
-            console.log(`validating pilot's name ${pilotNameInput.value}`);
+        if (validateInput(pilotNameInput.value) === "Not a string" || validateInput(pilotNameInput.value) === "") {
+            console.log(`pilotNameInput.value is ${pilotNameInput.value} in script.js. Type of pilotNameInput.value is ${typeof(pilotNameInput.value)} in script.js.`);
+
             alert("The pilot's name is not valid.");
             // event.preventDefault();
+            
         } else if (validateInput(pilotNameInput.value) === "Is a string") {
             alert("it's a string");
         }
