@@ -17,20 +17,22 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    // take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" as appropriate
-   // use validateInput() to complete the formSubmission() function
-   console.log(`testInput value in scriptHelper.js is ${testInput}`);
-   console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js`);
-   if (typeof (testInput) !== String) {
-    return "Not a string"
-   } else if (typeof (testInput) === String) {
-    return "Is a string"
-   } else if (testInput === "") {
+    // Not really sure why the test works, since things are returned as strings after the if statement tests.
+
+//    console.log(`testInput value in scriptHelper.js is ${testInput}`);
+//    console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js`);
+   if (testInput === "") {
+    // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing empty`);
     return "Empty"
-   } else if (isNaN(testInput)) {
+   } else if (isNaN(Number(testInput))) {
+    // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing NaN`);
     return "Not a Number"
-   } else {
-    return "Is a Number"
+   } else if (typeof (testInput) === String) {
+    // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing is a string`);
+    return "Is a string"
+   } else (typeof (testInput) !== String) {
+    // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing not a string`);
+    return "Not a string"
    };   
 }
 
@@ -62,7 +64,7 @@ module.exports.myFetch = myFetch;
 Adding Validation
 Adding Alerts
 
-You also want to make sure that the user entered valid info for each of the fields. Valid information for the fields means that the user submits a value that is easily converted to the correct data type for our fellow engineers. The pilot and co-pilot names should be strings and the fuel level and cargo mass should be numbers. To do this, complete the helper function in your scriptHelper.js called validateInput(). validateInput() should take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" as appropriate. In scriptHelper.js, you will use validateInput() to complete the formSubmission() function. formSubmission() will take in a document parameter and strings representing the pilot, co-pilot, fuel level, and cargo mass. Using the values in those strings and the document parameter for your HTML document, update the shuttle requirements as described below. Make sure to call your formSubmission() function at the appropriate time in your script.js file!
+ In scriptHelper.js, you will use validateInput() to complete the formSubmission() function. formSubmission() will take in a document parameter and strings representing the pilot, co-pilot, fuel level, and cargo mass. Using the values in those strings and the document parameter for your HTML document, update the shuttle requirements as described below. Make sure to call your formSubmission() function at the appropriate time in your script.js file!
 
 Note
 

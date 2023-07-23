@@ -21,36 +21,35 @@ window.addEventListener("load", function() {
         // validateInput(pilotNameInput.value);
 
         // validate pilot's name
-        if (validateInput(pilotNameInput.value) === "Not a string" || validateInput(pilotNameInput.value) === "") {
-            console.log(`pilotNameInput.value is ${pilotNameInput.value} in script.js. Type of pilotNameInput.value is ${typeof(pilotNameInput.value)} in script.js.`);
+        if (validateInput(pilotNameInput.value) === "Not a string" || validateInput(pilotNameInput.value) === "Empty") {
+            // console.log(`pilotNameInput.value is ${pilotNameInput.value} in script.js. Type of pilotNameInput.value is ${typeof(pilotNameInput.value)} in script.js.`);
 
             alert("The pilot's name is not valid.");
-            // event.preventDefault();
-            
-        } else if (validateInput(pilotNameInput.value) === "Is a string") {
-            alert("it's a string");
+            event.preventDefault();
         }
         
-        // STUCK ON VALIDATING PILOT'S NAME
+        // NOT REALLY SURE WHY ALL OF THIS IS WORKING
         
-        // // validate co-pilot's name
-        // if (validateInput(copilotNameInput === "Not a string" || validateInput(copilotNameInput.value === "Empty"))) {
-        //     console.log(`validating pilot's name ${copilotNameInput.value} ${validateInput(copilotNameInput)}`);
-        //     alert("The co-pilot's name is not valid.");
-        //     // event.preventDefault();
-        // }
-        
-        // // validate fuel level input
-        // if (validateInput(fuelLevelInput === "Not a number" || validateInput(fuelLevelInput === "Empty"))) {
-        //     alert("The fuel level is not valid.");
-        //     // event.preventDefault();
-        // }
+        if (validateInput(copilotNameInput.value) === "Not a string" || validateInput(copilotNameInput.value) === "Empty") {
+            // console.log(`copilotNameInput.value is ${copilotNameInput.value} in script.js. Type of copilotNameInput.value is ${typeof(copilotNameInput.value)} in script.js.`);
 
-        // // validate cargo mass input
-        // if (validateInput(cargoMassInput === "Not a number" || validateInput(cargoMassInput === "Empty"))) {
-        //     alert("The cargo mass is not valid.");
-        //     // event.preventDefault();
-        // }
+            alert("The co-pilot's name is not valid.");
+            event.preventDefault();
+        }
+        
+        if (validateInput(fuelLevelInput.value) === "Not a Number" || validateInput(fuelLevelInput.value) === "Empty") {
+            console.log(`fuelLevelInput.value is ${fuelLevelInput.value} in script.js. Type of fuelLevelInput.value is ${typeof(fuelLevelInput.value)} in script.js.`);
+
+            alert("The fuel level input is not valid.");
+            event.preventDefault();
+        }
+
+        if (validateInput(cargoMassInput.value) === "Not a Number" || validateInput(cargoMassInput.value) === "Empty") {
+            // console.log(`cargoMassInput.value is ${cargoMassInput.value} in script.js. Type of cargoMassInput.value is ${typeof(cargoMassInput.value)} in script.js.`);
+
+            alert("The cargo mass input is not valid.");
+            event.preventDefault();
+        }
         
         if (pilotNameInput.value === "" || copilotNameInput.value === "" || fuelLevelInput.value === "" || cargoMassInput.value === "") {
             alert("All fields are required!");
