@@ -48,43 +48,79 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+
+    // list.style.visibility = "visible";
     
     // validate pilot's name
-    if (validateInput(pilot) === "Not a string" || validateInput(pilot) === "Empty") {
-        
-    // console.log(`pilot is ${pilot} in formSubmission. Type of pilot is ${typeof(pilot)} in formSubmission.`);
 
-    alert("The pilot's name is not valid.");
-    event.preventDefault();
+    let pilotStatusId = document.getElementById("pilotStatus");
+
+    if (validateInput(pilot) === "Not a string" || validateInput(pilot) === "Empty") {
+
+        // console.log(`pilot is ${pilot} in formSubmission. Type of pilot is ${typeof(pilot)} in formSubmission.`);
+
+        alert("The pilot's name is not valid.");
+        pilotStatusId.innerHTML = "Pilot Ready";
+
+    // event.preventDefault();
+    } else {
+        pilotStatusId.innerHTML = `Pilot ${pilot} is ready for launch`;
     }
 
     // NOT REALLY SURE WHY ALL OF THIS IS WORKING
+
+    let copilotStatusId = document.getElementById("copilotStatus");
 
     if (validateInput(copilot) === "Not a string" || validateInput(copilot) === "Empty") {
         // console.log(`copilot is ${copilot} in script.js. Type of copilot is ${typeof(copilot)} in script.js.`);
 
         alert("The co-pilot's name is not valid.");
-        event.preventDefault();
+        copilotStatusId.innerHTML = "Co-pilot Ready";
+        
+        // event.preventDefault();
+    } else {
+        copilotStatusId.innerHTML = `Co-pilot ${copilot} is ready for launch`;
     }
 
     if (validateInput(fuelLevel) === "Not a Number" || validateInput(fuelLevel) === "Empty") {
         // console.log(`fuelLevel is ${fuelLevel} in script.js. Type of fuelLevel is ${typeof(fuelLevel)} in script.js.`);
 
         alert("The fuel level input is not valid.");
-        event.preventDefault();
+        // event.preventDefault();
+    }
+
+    let fuelStatusId = document.getElementById("fuelStatus");
+    
+    if (Number(fuelLevel) < 10000) {
+        list.style.visibility = "visible";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        fuelStatusId.innerHTML = `Fuel level too low for launch`;
+    } else {
+        fuelStatusId.innerHTML = `Fuel level high enough for launch`;
     }
 
     if (validateInput(cargoLevel) === "Not a Number" || validateInput(cargoLevel) === "Empty") {
+        
         // console.log(`cargoLevel is ${cargoLevel} in script.js. Type of cargoLevel is ${typeof(cargoLevel)} in script.js.`);
 
         alert("The cargo mass input is not valid.");
-        event.preventDefault();
+        // event.preventDefault();
+    }
+
+    let cargoStatusId = document.getElementById("cargoStatus");
+    
+    if (Number(cargoLevel) > 10000) {
+        list.style.visibility = "visible";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        cargoStatusId.innerHTML = `Cargo mass too heavy for launch`;
+    } else {
+        cargoStatusId.innerHTML = `Cargo mass low enough for launch`;
     }
 
     if (pilot === "" || copilot === "" || fuelLevel === "" || cargoLevel === "") {
         alert("All fields are required!");
         // stop the form submission
-        event.preventDefault();
+        // event.preventDefault();
     }
 };
 
