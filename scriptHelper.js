@@ -91,16 +91,24 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     let fuelStatusId = document.getElementById("fuelStatus");
     
-    if (Number(fuelLevel) < 10000) {
+    if (Number(fuelLevel) < 10000 || Number(cargoLevel) > 10000) {
         list.style.visibility = "visible";
         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        launchStatus.style.color = "rgb(199, 37, 78)";
+    } else {
+        launchStatus.innerHTML = "Shuttle is Ready for Launch";
+        launchStatus.style.color = "rgb(65, 159, 106)";
+        fuelStatusId.innerHTML = `Fuel level high enough for launch`;
+    }
+
+    if (Number(fuelLevel) < 10000) {
         fuelStatusId.innerHTML = `Fuel level too low for launch`;
     } else {
         fuelStatusId.innerHTML = `Fuel level high enough for launch`;
     }
 
     if (validateInput(cargoLevel) === "Not a Number" || validateInput(cargoLevel) === "Empty") {
-        
+
         // console.log(`cargoLevel is ${cargoLevel} in script.js. Type of cargoLevel is ${typeof(cargoLevel)} in script.js.`);
 
         alert("The cargo mass input is not valid.");
@@ -110,8 +118,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let cargoStatusId = document.getElementById("cargoStatus");
     
     if (Number(cargoLevel) > 10000) {
-        list.style.visibility = "visible";
-        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
         cargoStatusId.innerHTML = `Cargo mass too heavy for launch`;
     } else {
         cargoStatusId.innerHTML = `Cargo mass low enough for launch`;
