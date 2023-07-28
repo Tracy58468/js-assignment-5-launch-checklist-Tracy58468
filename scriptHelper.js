@@ -21,17 +21,28 @@ function validateInput(testInput) {
 
 //    console.log(`testInput value in scriptHelper.js is ${testInput}`);
 //    console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js`);
-   if (testInput === "") {
+   if (testInput === "") { // tests to make sure there is not an empty string. If it is empty, returns empty.
+
     // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing empty`);
+
     return "Empty"
-   } else if (isNaN(Number(testInput))) {
+
+   } else if (isNaN(Number(testInput))) { // tests to see if the value can be successfully converted into a number. If it can't, returns not a number.
+
     // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing NaN`);
+
     return "Not a Number"
-   } else if (typeof (testInput) === String) {
+
+   } else if (typeof (testInput) === String) { // tests to see if the input is a string. If it is, returns is a string.
+
     // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing is a string`);
+
     return "Is a string"
+
    } else { // (typeof (testInput) !== String) {
+
     // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing not a string`);
+
     return "Not a string"
    };   
 }
@@ -40,6 +51,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     
     // validate pilot's name
     if (validateInput(pilot) === "Not a string" || validateInput(pilot) === "Empty") {
+        
     // console.log(`pilot is ${pilot} in formSubmission. Type of pilot is ${typeof(pilot)} in formSubmission.`);
 
     alert("The pilot's name is not valid.");
