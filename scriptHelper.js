@@ -14,6 +14,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                 </ol>
                 <img src="">
    */
+    const missionTarget = document.getElementById("missionTarget");
+
 }
 
 function validateInput(testInput) {
@@ -142,13 +144,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        response.json().then(function(json) {
+            div.
+        })
         });
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
+    let pickedPlanet = Math.floor(Math.random()*(planets.length + 1));
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
