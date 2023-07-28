@@ -43,42 +43,50 @@ function validateInput(testInput) {
 
     // console.log(`validateInput testInput ${testInput} type of testInput = ${typeof testInput} in scriptHelper.js testing not a string`);
 
-    return "Not a string"
+    return "Is a Number"
    };   
 }
 
+// list.style.visibility = "hidden";
+
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
-    // list.style.visibility = "visible";
-    
     // validate pilot's name
 
+    let launchStatus = document.getElementById('launchStatus');
     let pilotStatusId = document.getElementById("pilotStatus");
 
-    if (validateInput(pilot) === "Not a string" || validateInput(pilot) === "Empty") {
+    if (validateInput(pilot) === "Is a Number" || validateInput(pilot) === "Empty") { // Checking to see whether pilot name input is empty or a number. If it is either, alert defect.
 
         // console.log(`pilot is ${pilot} in formSubmission. Type of pilot is ${typeof(pilot)} in formSubmission.`);
 
         alert("The pilot's name is not valid.");
-        pilotStatusId.innerHTML = "Pilot Ready";
+        pilotStatusId.innerHTML = "Pilot is not ready";
 
     // event.preventDefault();
     } else {
+        list.style.visibility = "visible";
+        launchStatus.innerHTML = "Shuttle is Ready for Launch";
+        launchStatus.style.color = "rgb(65, 159, 106)";
         pilotStatusId.innerHTML = `Pilot ${pilot} is ready for launch`;
     }
 
-    // NOT REALLY SURE WHY ALL OF THIS IS WORKING
+    // NOT REALLY SURE WHY ALL OF THE VALIDATION IS WORKING
 
     let copilotStatusId = document.getElementById("copilotStatus");
 
-    if (validateInput(copilot) === "Not a string" || validateInput(copilot) === "Empty") {
+    if (validateInput(copilot) === "Is a Number" || validateInput(copilot) === "Empty") { // Checking to see whether pilot name input is empty or a number. If it is either, alert defect.
+
         // console.log(`copilot is ${copilot} in script.js. Type of copilot is ${typeof(copilot)} in script.js.`);
 
         alert("The co-pilot's name is not valid.");
-        copilotStatusId.innerHTML = "Co-pilot Ready";
+        copilotStatusId.innerHTML = "Co-pilot is not ready";
         
         // event.preventDefault();
     } else {
+        list.style.visibility = "visible";
+        launchStatus.innerHTML = "Shuttle is Ready for Launch";
+        launchStatus.style.color = "rgb(65, 159, 106)";
         copilotStatusId.innerHTML = `Co-pilot ${copilot} is ready for launch`;
     }
 
@@ -91,11 +99,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     let fuelStatusId = document.getElementById("fuelStatus");
     
-    if (Number(fuelLevel) < 10000 || Number(cargoLevel) > 10000) {
+    if (Number(fuelLevel) < 10000 || Number(cargoLevel) > 10000 || validateInput(pilot) === "Is a Number" || validateInput(pilot) === "Empty" || validateInput(copilot) === "Is a Number" || validateInput(copilot) === "Empty") {
         list.style.visibility = "visible";
         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
         launchStatus.style.color = "rgb(199, 37, 78)";
     } else {
+        list.style.visibility = "visible";
         launchStatus.innerHTML = "Shuttle is Ready for Launch";
         launchStatus.style.color = "rgb(65, 159, 106)";
         fuelStatusId.innerHTML = `Fuel level high enough for launch`;
