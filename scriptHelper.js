@@ -37,8 +37,44 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
-}
+    
+    // validate pilot's name
+    if (validateInput(pilot) === "Not a string" || validateInput(pilot) === "Empty") {
+    // console.log(`pilot is ${pilot} in formSubmission. Type of pilot is ${typeof(pilot)} in formSubmission.`);
+
+    alert("The pilot's name is not valid.");
+    event.preventDefault();
+    }
+
+    // NOT REALLY SURE WHY ALL OF THIS IS WORKING
+
+    if (validateInput(copilot) === "Not a string" || validateInput(copilot) === "Empty") {
+        // console.log(`copilot is ${copilot} in script.js. Type of copilot is ${typeof(copilot)} in script.js.`);
+
+        alert("The co-pilot's name is not valid.");
+        event.preventDefault();
+    }
+
+    if (validateInput(fuelLevel) === "Not a Number" || validateInput(fuelLevel) === "Empty") {
+        // console.log(`fuelLevel is ${fuelLevel} in script.js. Type of fuelLevel is ${typeof(fuelLevel)} in script.js.`);
+
+        alert("The fuel level input is not valid.");
+        event.preventDefault();
+    }
+
+    if (validateInput(cargoLevel) === "Not a Number" || validateInput(cargoLevel) === "Empty") {
+        // console.log(`cargoLevel is ${cargoLevel} in script.js. Type of cargoLevel is ${typeof(cargoLevel)} in script.js.`);
+
+        alert("The cargo mass input is not valid.");
+        event.preventDefault();
+    }
+
+    if (pilot === "" || copilot === "" || fuelLevel === "" || cargoLevel === "") {
+        alert("All fields are required!");
+        // stop the form submission
+        event.preventDefault();
+    }
+};
 
 async function myFetch() {
     let planetsReturned;
