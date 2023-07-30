@@ -16,18 +16,20 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
     const missionTarget = document.getElementById("missionTarget");
 
+    // console.log(name); // I can't find where "name" is defined anywhere.
+
     missionTarget.innerHTML = `
         <h2>Mission Destination</h2>
             <ol>
-                <li>Name: ${name}</li>
-                <li>Diameter: ${diameter}</li>
-                <li>Star: ${star}</li>
-                <li>Distance from Earth: ${distance}</li>
-                <li>Number of Moons: ${moons}</li>
+                <li>Name: ${name[0]}</li>
+                <li>Diameter: ${name[1]}</li>
+                <li>Star: ${name[2]}</li>
+                <li>Distance from Earth: ${name[3]}</li>
+                <li>Number of Moons: ${name[4]}</li>
             </ol>
-        <img src="${imageUrl}">
+        <img src = "${name[5]}">
     `
-
+    // WHY are all of the above indices of "name"?
 }
 
 function validateInput(testInput) {
@@ -179,9 +181,11 @@ function pickPlanet(planets) {
     // console.log(`pickedPlanetNum:  ${pickedPlanetNum}`);
 
     // now get planet name
-    let pickedPlanet = planets[pickedPlanetNum].name;
-    // console.log(`pickedPlanet:  ${pickedPlanet}`); // Spmehow, this is SOMETIMES working and SOMETIMES not. HA! It was when I had (planets.length + 1) in my random calculation. That would sometimes return a number that had no entry in the array.
-    return pickedPlanet;
+    let pickedPlanet = [planets[pickedPlanetNum].name, planets[pickedPlanetNum].diameter, planets[pickedPlanetNum].star, planets[pickedPlanetNum].distance, planets[pickedPlanetNum].moons, planets[pickedPlanetNum].image];
+
+    // console.log(`pickedPlanet:  ${pickedPlanet}`); // Somehow, this is SOMETIMES working and SOMETIMES not. HA! It was when I had (planets.length + 1) in my random calculation. That would sometimes return a number that had no entry in the array.
+
+    return pickedPlanet; // this returns the array
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
@@ -189,5 +193,3 @@ module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet; 
 module.exports.myFetch = myFetch;
-
-/*ONLY MODIFY THIS AND SCRIPT.JS*/
