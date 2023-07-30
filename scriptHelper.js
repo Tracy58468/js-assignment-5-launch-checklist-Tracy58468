@@ -17,7 +17,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     const missionTarget = document.getElementById("missionTarget");
 
     missionTarget.innerHTML = `
-        h2>Mission Destination</h2>
+        <h2>Mission Destination</h2>
             <ol>
                 <li>Name: ${name}</li>
                 <li>Diameter: ${diameter}</li>
@@ -166,20 +166,21 @@ async function myFetch() {
             return response.json();
         // })
     });
-    console.log("planetsReturned");
-    console.log(planetsReturned);
-    // console.log("json");
-    // console.log(response.json());
+    // console.log("planetsReturned");
+    // console.log(planetsReturned);
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
-    let pickedPlanetNum = Math.floor(Math.random()*(planets.length + 1)); // pick a number at random
-    console.log(`pickedPlanetNum:  ${pickedPlanetNum}`);
+    // console.log(planets.length);
+    let pickedPlanetNum = Math.floor(Math.random()*(planets.length)); // pick a number at random
+    
+    // console.log(`pickedPlanetNum:  ${pickedPlanetNum}`);
+
     // now get planet name
     let pickedPlanet = planets[pickedPlanetNum].name;
-    console.log(`pickedPlanet:  ${pickedPlanet}`);
+    // console.log(`pickedPlanet:  ${pickedPlanet}`); // Spmehow, this is SOMETIMES working and SOMETIMES not. HA! It was when I had (planets.length + 1) in my random calculation. That would sometimes return a number that had no entry in the array.
     return pickedPlanet;
 }
 
