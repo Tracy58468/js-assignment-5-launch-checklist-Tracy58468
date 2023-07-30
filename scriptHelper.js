@@ -161,7 +161,7 @@ async function myFetch() {
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
         // console.log("response");
         // console.log(response);
-        // response.json().then(function(json) { // NEED TO FIGURE OUT WHY THIS DOESN'T BELONG HERE
+        // response.json().then(function(json) { // NEED TO FIGURE OUT WHY THIS DOESN'T BELONG HERE - Answer:  Since we don't need to do anything with the JSON inside of myFetch, all we need to do is return the contents of the JSON.
 
             return response.json();
         // })
