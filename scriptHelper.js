@@ -157,20 +157,28 @@ async function myFetch() {
     let planetsReturned;
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
-        response.json().then(function(json) {
-            console.log(json);
-            return json;
-        })
+        // console.log("response");
+        // console.log(response);
+        // response.json().then(function(json) { // NEED TO FIGURE OUT WHY THIS DOESN'T BELONG HERE
+        //     response = JSON.parse(json);
+        //     console.log(`myFetch json, json.length: ${json.length}`);
+        //     console.log(json);
+            return response.json();
+        // })
     });
+    console.log("planetsReturned");
+    console.log(planetsReturned);
+    // console.log("json");
+    // console.log(response.json());
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
-    let pickedPlanetNum = Math.floor(Math.random()*(planets.length + 1));
+    let pickedPlanetNum = Math.floor(Math.random()*(planets.length + 1)); // pick a number at random
     console.log(`pickedPlanetNum:  ${pickedPlanetNum}`);
     // now get planet name
-    let pickedPlanet = planets.pickedPlanetNum;
+    let pickedPlanet = planets[pickedPlanetNum].name;
     console.log(`pickedPlanet:  ${pickedPlanet}`);
     return pickedPlanet;
 }

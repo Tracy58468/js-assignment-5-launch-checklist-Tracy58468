@@ -48,20 +48,42 @@ window.addEventListener("load", function() {
         event.preventDefault();
     });
 
-    myFetch();
+    // myFetch();
+    
+    // console.log(planetsReturned);
 
-//     let listedPlanets;
-//     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-//     let listedPlanetsResponse = planetsReturned;
-//     listedPlanetsResponse.then(function (result) {
+    let listedPlanets;
+    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
+    let listedPlanetsResponse = myFetch();
+    // console.log(`listedPlanetsResponse after init ${listedPlanetsResponse}`);
+    // console.log(listedPlanetsResponse);
+    listedPlanetsResponse.then(function (result) {
+        listedPlanets = result;
+        console.log("result");
+        console.log(result);
+        console.log("listedPlanets");
+        console.log(listedPlanets);
+    }).then(function () {
+        console.log(listedPlanets);
+       // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+       
+        pickPlanet(listedPlanets);
+
+        // console.log(`pickedPlanetNum in script.js ${pickedPlanetNum}`);
+        // addDestinationInfo(document, pickedPlanet.name, pickedPlanet.diameter, pickedPlanet.star, pickedPlanet.distance, pickedPlanet.moons, pickedPlanet.imageUrl);
+        // addDestinationInfo(document, pickedPlanetNum.name, pickedPlanetNum.diameter, pickedPlanetNum.star, pickedPlanetNum.distance, pickedPlanetNum.moons, pickedPlanetNum.imageUrl);
+   })
+
+// ORIGINAL
+//    let listedPlanets;
+//    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
+//    let listedPlanetsResponse;
+//    listedPlanetsResponse.then(function (result) {
 //        listedPlanets = result;
 //        console.log(listedPlanets);
-//     }).then(function () {
+//    }).then(function () {
 //        console.log(listedPlanets);
 //        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-       
-//     //    pickPlanet(listedPlanetsResponse);
-//     //    addDestinationInfo(document, pickedPlanet.name, pickedPlanet.diameter, pickedPlanet.star, pickedPlanet.distance, pickedPlanet.moons, pickedPlanet.imageUrl);
 //    })
    
 });
