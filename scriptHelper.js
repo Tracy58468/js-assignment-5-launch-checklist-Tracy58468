@@ -162,9 +162,7 @@ async function myFetch() {
         // console.log("response");
         // console.log(response);
         // response.json().then(function(json) { // NEED TO FIGURE OUT WHY THIS DOESN'T BELONG HERE
-        //     response = JSON.parse(json);
-        //     console.log(`myFetch json, json.length: ${json.length}`);
-        //     console.log(json);
+
             return response.json();
         // })
     });
