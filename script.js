@@ -34,6 +34,8 @@ window.addEventListener("load", function() {
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
 
+        let pickedPlanet = {}; // Have to declare pickedPlanet here to get the Mission Destination results to appear. Don't know why. Says it's declared but never read. Why does it say that?
+
         // console.log("result");
         // console.log(result);
         // console.log("listedPlanets");
@@ -44,9 +46,13 @@ window.addEventListener("load", function() {
         // console.log(listedPlanets);
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
        
-        pickPlanet(listedPlanets);
+       
+       
+       pickPlanet(listedPlanets);
 
-        addDestinationInfo(document, pickPlanet(listedPlanets));
+       // addDestinationInfo(document, pickPlanet(listedPlanets));
+
+       addDestinationInfo(document, pickedPlanet.name, pickedPlanet.diameter, pickedPlanet.star, pickedPlanet.distance, pickedPlanet.moons, pickedPlanet.image);
    })
    
 });

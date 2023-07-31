@@ -16,20 +16,32 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
     const missionTarget = document.getElementById("missionTarget");
 
-    console.log(name); // I can't find where "name" is defined anywhere.
+    // console.log(name); // I can't find where "name" is defined anywhere. This happened when I was returning pickedPlanet as an array, not as an object
+
+    // missionTarget.innerHTML = `
+    //     <h2>Mission Destination</h2>
+    //         <ol>
+    //             <li>Name: ${name[0]}</li>
+    //             <li>Diameter: ${name[1]}</li>
+    //             <li>Star: ${name[2]}</li>
+    //             <li>Distance from Earth: ${name[3]}</li>
+    //             <li>Number of Moons: ${name[4]}</li>
+    //         </ol>
+    //     <img src = "${name[5]}">
+    // `
+    // WHY are all of the above indices of "name"? - Answer:  Because I was returning pickedPlanet as an array, rather than as an object.
 
     missionTarget.innerHTML = `
         <h2>Mission Destination</h2>
             <ol>
-                <li>Name: ${name[0]}</li>
-                <li>Diameter: ${name[1]}</li>
-                <li>Star: ${name[2]}</li>
-                <li>Distance from Earth: ${name[3]}</li>
-                <li>Number of Moons: ${name[4]}</li>
+                <li>Name: ${name}</li>
+                <li>Diameter: ${diameter}</li>
+                <li>Star: ${star}</li>
+                <li>Distance from Earth: ${distance}</li>
+                <li>Number of Moons: ${moons}</li>
             </ol>
-        <img src = "${name[5]}">
+        <img src = "${imageUrl}">
     `
-    // WHY are all of the above indices of "name"?
 }
 
 function validateInput(testInput) {
@@ -71,62 +83,47 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     let launchStatus = document.getElementById('launchStatus');
     let pilotStatusId = document.getElementById("pilotStatus");
+    let copilotStatusId = document.getElementById("copilotStatus");
+    let fuelStatusId = document.getElementById("fuelStatus");
+    let cargoStatusId = document.getElementById("cargoStatus");
 
     if (validateInput(pilot) === "Is a Number" || validateInput(pilot) === "Empty") { // Checking to see whether pilot name input is empty or a number. If it is either, alert defect.
 
         // console.log(`pilot is ${pilot} in formSubmission. Type of pilot is ${typeof(pilot)} in formSubmission.`);
 
+        pilotStatusId.innerHTML = "Pilot's name is not valid";
         alert("The pilot's name is not valid.");
-        pilotStatusId.innerHTML = "Pilot is not ready";
-
-    // event.preventDefault();
+        
+        // event.preventDefault();
     } else {
-        list.style.visibility = "visible";
-        launchStatus.innerHTML = "Shuttle is Ready for Launch";
-        launchStatus.style.color = "rgb(65, 159, 106)";
+        // list.style.visibility = "visible";
+        // launchStatus.innerHTML = "Shuttle is Ready for Launch";
+        // launchStatus.style.color = "rgb(65, 159, 106)";
         pilotStatusId.innerHTML = `Pilot ${pilot} is ready for launch`;
     }
-
-    // NOT REALLY SURE WHY ALL OF THE VALIDATION IS WORKING
-
-    let copilotStatusId = document.getElementById("copilotStatus");
 
     if (validateInput(copilot) === "Is a Number" || validateInput(copilot) === "Empty") { // Checking to see whether pilot name input is empty or a number. If it is either, alert defect.
 
         // console.log(`copilot is ${copilot} in script.js. Type of copilot is ${typeof(copilot)} in script.js.`);
 
+        copilotStatusId.innerHTML = "Co-pilot's name is not valid";
         alert("The co-pilot's name is not valid.");
-        copilotStatusId.innerHTML = "Co-pilot is not ready";
-        
+                
         // event.preventDefault();
     } else {
-        list.style.visibility = "visible";
-        launchStatus.innerHTML = "Shuttle is Ready for Launch";
-        launchStatus.style.color = "rgb(65, 159, 106)";
+        // list.style.visibility = "visible";
+        // launchStatus.innerHTML = "Shuttle is Ready for Launch";
+        // launchStatus.style.color = "rgb(65, 159, 106)";
         copilotStatusId.innerHTML = `Co-pilot ${copilot} is ready for launch`;
     }
 
     if (validateInput(fuelLevel) === "Not a Number" || validateInput(fuelLevel) === "Empty") {
         // console.log(`fuelLevel is ${fuelLevel} in script.js. Type of fuelLevel is ${typeof(fuelLevel)} in script.js.`);
 
+        fuelStatusId.innerHTML = `Fuel level is invalid`;
         alert("The fuel level input is not valid.");
         // event.preventDefault();
-    }
-
-    let fuelStatusId = document.getElementById("fuelStatus");
-    
-    if (Number(fuelLevel) < 10000 || Number(cargoLevel) > 10000 || validateInput(pilot) === "Is a Number" || validateInput(pilot) === "Empty" || validateInput(copilot) === "Is a Number" || validateInput(copilot) === "Empty") {
-        list.style.visibility = "visible";
-        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
-        launchStatus.style.color = "rgb(199, 37, 78)";
-    } else {
-        list.style.visibility = "visible";
-        launchStatus.innerHTML = "Shuttle is Ready for Launch";
-        launchStatus.style.color = "rgb(65, 159, 106)";
-        fuelStatusId.innerHTML = `Fuel level high enough for launch`;
-    }
-
-    if (Number(fuelLevel) < 10000) {
+    } else if (Number(fuelLevel) < 10000) {
         fuelStatusId.innerHTML = `Fuel level too low for launch`;
     } else {
         fuelStatusId.innerHTML = `Fuel level high enough for launch`;
@@ -136,17 +133,25 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
         // console.log(`cargoLevel is ${cargoLevel} in script.js. Type of cargoLevel is ${typeof(cargoLevel)} in script.js.`);
 
+        cargoStatusId.innerHTML = `Cargo mass is invalid`;
         alert("The cargo mass input is not valid.");
         // event.preventDefault();
-    }
-
-    let cargoStatusId = document.getElementById("cargoStatus");
-    
-    if (Number(cargoLevel) > 10000) {
+    } else if (Number(cargoLevel) > 10000) {
         cargoStatusId.innerHTML = `Cargo mass too heavy for launch`;
     } else {
         cargoStatusId.innerHTML = `Cargo mass low enough for launch`;
     }
+
+    if (validateInput(pilot) === "Is a Number" || validateInput(pilot) === "Empty" || validateInput(copilot) === "Is a Number" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Not a Number" || Number(fuelLevel) < 10000 || validateInput(cargoLevel) === "Not a Number" || Number(cargoLevel) > 10000) {
+        list.style.visibility = "visible";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        launchStatus.style.color = "rgb(199, 37, 78)";
+    } else {
+        list.style.visibility = "visible";
+        launchStatus.innerHTML = "Shuttle is Ready for Launch";
+        launchStatus.style.color = "rgb(65, 159, 106)";
+        // fuelStatusId.innerHTML = `Fuel level high enough for launch`;
+    } // all of this checks to make sure inputs are changing flight status as required
 
     if (pilot === "" || copilot === "" || fuelLevel === "" || cargoLevel === "") {
         alert("All fields are required!");
@@ -179,9 +184,12 @@ function pickPlanet(planets) {
     // console.log(`pickedPlanetNum:  ${pickedPlanetNum}`);
 
     // now get planet name
-    let pickedPlanet = [planets[pickedPlanetNum].name, planets[pickedPlanetNum].diameter, planets[pickedPlanetNum].star, planets[pickedPlanetNum].distance, planets[pickedPlanetNum].moons, planets[pickedPlanetNum].image];
+    // let pickedPlanet = [planets[pickedPlanetNum].name, planets[pickedPlanetNum].diameter, planets[pickedPlanetNum].star, planets[pickedPlanetNum].distance, planets[pickedPlanetNum].moons, planets[pickedPlanetNum].image]; // returning as an array - wrong way to do this.
+
+    pickedPlanet = planets[pickedPlanetNum];
 
     // console.log(`pickedPlanet:  ${pickedPlanet}`); // Somehow, this is SOMETIMES working and SOMETIMES not. HA! It was when I had (planets.length + 1) in my random calculation. That would sometimes return a number that had no entry in the array.
+    // console.log(`pickedPlanet.name in pickPlanet:  ${pickedPlanet.name}`);
 
     return pickedPlanet; // this returns the array
 }
