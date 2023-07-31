@@ -16,7 +16,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
     const missionTarget = document.getElementById("missionTarget");
 
-    // console.log(name); // I can't find where "name" is defined anywhere.
+    console.log(name); // I can't find where "name" is defined anywhere.
 
     missionTarget.innerHTML = `
         <h2>Mission Destination</h2>
