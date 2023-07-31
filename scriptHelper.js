@@ -142,7 +142,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         cargoStatusId.innerHTML = `Cargo mass low enough for launch`;
     }
 
-    if (validateInput(pilot) === "Is a Number" || validateInput(pilot) === "Empty" || validateInput(copilot) === "Is a Number" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Not a Number" || Number(fuelLevel) < 10000 || validateInput(cargoLevel) === "Not a Number" || Number(cargoLevel) > 10000) {
+    if (validateInput(pilot) === "Is a Number" || validateInput(pilot) === "Empty" || validateInput(copilot) === "Is a Number" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Not a Number" || Number(fuelLevel) < 10000 || validateInput(cargoLevel) === "Not a Number" || Number(cargoLevel) > 10000 || validateInput(cargoLevel) === "Empty") {
         list.style.visibility = "visible";
         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
         launchStatus.style.color = "rgb(199, 37, 78)";
